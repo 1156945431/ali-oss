@@ -811,7 +811,7 @@ describe('test/object.test.js', () => {
         'content-type': 'xml',
         'content-language': 'zh-cn',
       };
-      const url = this.store.signatureUrl(this.name, { response });
+      const url = store.signatureUrl(this.name, { response });
       assert(url.indexOf('response-content-type=xml') !== -1);
       assert(url.indexOf('response-content-language=zh-cn') !== -1);
     });
