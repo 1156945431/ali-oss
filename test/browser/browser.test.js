@@ -506,9 +506,9 @@ describe('browser', () => {
     it('GETs and PUTs blob to a bucket', async () => {
       const name = `${prefix}put/test`;
       const body = new Blob(['blobBody'], { type: 'text/plain' });
-      const resultPut = await this.store.put(name, body);
+      const resultPut = await store.put(name, body);
       assert.equal(resultPut.res.status, 200);
-      const resultGet = await this.store.get(name);
+      const resultGet = await store.get(name);
       assert.equal(resultGet.res.status, 200);
 
 
@@ -521,7 +521,7 @@ describe('browser', () => {
         fr.readAsText(body, 'utf-8');
       });
 
-      const resultDel = await this.store.delete(name);
+      const resultDel = await store.delete(name);
       assert.equal(resultDel.res.status, 204);
     });
   });
@@ -614,7 +614,7 @@ describe('browser', () => {
         'content-type': 'xml',
         'content-language': 'zh-cn',
       };
-      const url = this.store.signatureUrl(this.name, { response });
+      const url = store.signatureUrl(this.name, { response });
       assert(url.indexOf('response-content-type=xml') !== -1);
       assert(url.indexOf('response-content-language=zh-cn') !== -1);
     });
